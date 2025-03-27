@@ -26,7 +26,6 @@ norm_data_qual = (qual - means_qual)./dev_qual; % centered and scaled dataset
 x = norm_data_prod;
 t = norm_data_qual;
 
-% just to see where the horizontal line shows up
 net = feedforwardnet(1);
 net.trainParam.epochs = 1000;
 net.trainParam.showWindow = false;
@@ -35,20 +34,7 @@ y = net(x');
 
 close all;
 scatter(t,y)
-%% after testing data
-close all;
-threshold = y(end)
-range = abs(threshold/2)
 
-% removes horizontal line
-valid = (y < (threshold - range)) | (y > (threshold + range));
-invalid = (y > (threshold - range)) & (y < (threshold + range));
-t2_inv = t(invalid);
-t2 = t(valid);
-x2 = x(valid,:);
-y2 = y(1,valid);
-y2_inv = y(1,invalid);
-scatter(t2,y2)
 %% run this after all above
 close all;
 net2 = feedforwardnet(10);
