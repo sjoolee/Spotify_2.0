@@ -83,7 +83,7 @@ for i = 1:length(Final_combinations)
         dropped(i,j) = select(j);
     end
 end
-%% does not work without 
+%% does not work without a target variable like playcount
 C = Final_combinations(1);
 [T, P, R2, R2_All] = prob1_fun(array2table(prod), C);
 
